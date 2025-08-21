@@ -10,5 +10,5 @@ Route::get('/user', function (Request $request) {
 
 
 Route::get('/test', function () {
-    return User::all();
+    return User::query()->paginate(request()->perPage ?? 10);
 });
