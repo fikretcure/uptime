@@ -36,6 +36,7 @@ class UptimeCommand extends Command
 
         } catch (\Exception $e) {
             $this->error("Request failed: " . $e->getMessage());
+            info("Request failed. Status: " . $e->getMessage());
         }
     }
 }
