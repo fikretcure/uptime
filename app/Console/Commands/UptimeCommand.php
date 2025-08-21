@@ -29,7 +29,7 @@ class UptimeCommand extends Command
         $url = 'https://dentalasistanim.com';
 
         try {
-            $response = Http::timeout(4)->get($url);
+            $response = Http::get($url);
             $this->info("Request sent to {$url}. Status: " . $response->status());
 
             info("Request sent to {$url}. Status: " . $response->status());
