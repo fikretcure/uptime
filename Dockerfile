@@ -40,7 +40,7 @@ RUN echo "* * * * * cd /app && /usr/local/bin/php artisan schedule:run >> /var/l
 RUN mkdir -p /var/log && touch /var/log/cron.log
 
 
-CMD ["composer", "update"]
 
-ENTRYPOINT ["sh", "-c", "service cron start && php artisan octane:start --server=frankenphp --workers=8 --max-requests=200 --watch"]
+
+ENTRYPOINT ["sh", "-c", "composer update && service cron start && php artisan octane:start --server=frankenphp --workers=8 --max-requests=200 --watch"]
 
