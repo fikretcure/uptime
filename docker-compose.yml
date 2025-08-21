@@ -2,7 +2,7 @@ services:
   app:
     build: .
     container_name: app
-    entrypoint: php artisan octane:frankenphp --workers=1 --max-requests=1
+    entrypoint: php artisan octane:frankenphp --workers=8 --max-requests=200
     working_dir: /app
     ports:
       - "8000:8000"

@@ -29,7 +29,8 @@ WORKDIR /app
 # Laravel dosyalarını kopyala
 COPY . .
 
-CMD sh -c "composer update && tail -f /dev/null"
+
+CMD sh -c "composer update && php artisan migrate:fresh --seed && tail -f /dev/null"
 
 
 
