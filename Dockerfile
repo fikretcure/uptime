@@ -38,5 +38,4 @@ RUN echo "* * * * * cd /app && /usr/local/bin/php artisan schedule:run >> /var/l
 # Log dizinini oluştur
 RUN mkdir -p /var/log && touch /var/log/cron.log
 
-# CMD: cron + Laravel migrate + tail
-CMD sh -c "service cron start && composer update && php artisan migrate:fresh --seed && tail -f /dev/null"
+CMD ["tail", "-f", "/dev/null"]
