@@ -2,9 +2,9 @@ services:
   app:
     build: .
     container_name: app
+    entrypoint: php artisan octane:frankenphp --workers=1 --max-requests=1
     working_dir: /app
     ports:
-      - "8080:80"
-      - "4430:443"
+      - "8000:8000"
     volumes:
       - ./:/app

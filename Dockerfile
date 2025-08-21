@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     g++ \
     libicu-dev \
-    && docker-php-ext-install pdo pdo_mysql intl gd \
+    && docker-php-ext-install pdo pdo_mysql intl gd pcntl \
     && rm -rf /var/lib/apt/lists/*
 
 # Composer ekle
@@ -28,4 +28,8 @@ WORKDIR /app
 
 # Laravel dosyalarını kopyala
 COPY . .
+
+CMD sh -c "composer update && tail -f /dev/null"
+
+
 
