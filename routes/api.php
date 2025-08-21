@@ -10,5 +10,5 @@ Route::get('/user', function (Request $request) {
 
 
 Route::get('/test', function () {
-    return User::query()->latest('id')->get();
+    return User::query()->limit(10)->latest('id')->get();
 });

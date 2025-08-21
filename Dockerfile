@@ -27,6 +27,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Çalışma dizini
 WORKDIR /app
 
+
 # Laravel dosyalarını kopyala
 COPY . .
 
@@ -38,4 +39,8 @@ RUN echo "* * * * * cd /app && /usr/local/bin/php artisan schedule:run >> /var/l
 # Log dizinini oluştur
 RUN mkdir -p /var/log && touch /var/log/cron.log
 
-CMD ["tail", "-f", "/dev/null"]
+
+CMD ["composer", "update"]
+
+ENTRYPOINT ["sh", "-c", "service cron start && php artisan octane:start --server=frankenphp --workers=8 --max-requests=200 --watch"]
+
